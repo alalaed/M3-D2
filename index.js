@@ -259,12 +259,19 @@ const recentCardDisplay = function(){
 
 
     let container = document.getElementById("main-section-recent")
+    letcontainerModal = document.getElementById("modalbody")
     let array=[]  
 
     do {
         let x = (Math.floor((Math.random()*11)+1))
         if(!array.includes(x)){
             array.push(x)
+
+            const inhaltmodal =`
+                <tr>
+                    <td>${dataObj.data[x].album.title}</td>
+                </tr>` 
+
             const inhalt = `
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
         <a href="artist.html">
@@ -293,6 +300,7 @@ const recentCardDisplay = function(){
     </div>
                         
                         `
+    containerModal.innerHTML+= inhaltmodal
     container.innerHTML +=inhalt
         }
     }
@@ -322,12 +330,19 @@ const toTryCardDisplay = function(){
 
 
     let container = document.getElementById("main-section-to-try")
+    letcontainerModal = document.getElementById("modalbody")
     let array=[]  
 
     do {
         let x = (Math.floor((Math.random()*11)+1))
         if(!array.includes(x)){
             array.push(x)
+
+            const inhaltmodal =`
+                <tr>
+                    <td>${dataObj.data[x].album.title}</td>
+                </tr>` 
+
             const inhalt = `
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
         <a href="artist.html">
@@ -356,6 +371,7 @@ const toTryCardDisplay = function(){
     </div>
                         
                         `
+    containerModal.innerHTML+= inhaltmodal
     container.innerHTML +=inhalt 
         }
     }
