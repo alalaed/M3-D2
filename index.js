@@ -171,7 +171,7 @@ const responsive = function(){
 
 const smallCardDisplay = function(){
     
-    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=drake", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
