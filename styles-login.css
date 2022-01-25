@@ -1,0 +1,111 @@
+:root {
+  --black-1: #000000;  /* The darkest black */
+  --black-2: #121212;  /* Slightly less dark black */
+  --black-3: #1f1f1f;  /* Less dark black */
+  --black-4: #2d2d2d; /* Less dark black */
+  --white-1: #ffffff; /* Purest white - Main text */
+  --white-2: #b2b2b2 ;  /* Dark white - secondary text */
+  --spotify-green: #1db954 ;  /* Signature spotify green */
+}
+
+body{
+    font-family: 'Kanit', sans-serif;
+}
+
+.container{
+    width: 350px;
+}
+
+.logo-login{
+    width: 140px;
+}
+
+.login-p{
+    font-weight: 700;
+    margin: 0;
+}
+
+.facebook{
+    background-color: #4867AA;
+    color: var(--white-1);
+    width:350px;
+    border-radius: 50px;
+    border:none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px ;
+}
+.apple{
+    background-color: var(--black-1);
+    color: var(--white-1);
+    width:350px;
+    border-radius: 50px;
+    border:none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px ;
+}
+.or{
+    font-weight: 700;
+}
+
+.input-login{
+    width:350px;
+    border: 1px solid rgba(194, 192, 192, 0.918);
+    color: rgba(194, 192, 192, 0.918);
+}
+
+::placeholder{
+       color: rgba(194, 192, 192, 0.918);
+       font-size: 12px;
+ 
+}
+
+.login-button{
+    border: none;
+    background-color: var(--spotify-green);
+    color: var(--white-1);
+    border-radius: 50px;
+    font-size: 12px;
+
+}
+
+.login-button a{
+    color: var(--white-1);
+}
+.remember-me{
+    color: rgba(129, 127, 127, 0.918);
+    font-size: 12px;
+    
+}
+.remember-box{
+    width: 350px;
+}
+.forgot{
+    color: var(--spotify-green);
+    font-size: 12px;
+
+}
+
+.sign-up{
+    background-color: white;
+    color: rgba(88, 85, 85, 0.918);
+    width:350px;
+    border-radius: 50px;
+    border:1px solid black;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px ;
+}
+
+.conditions{
+    color: rgba(194, 192, 192, 0.918);;
+    font-size: 8px;
+    padding: 0;
+    text-align:center ;
+}
+
+.terms{
+    color: var(--spotify-green);
+}
+
