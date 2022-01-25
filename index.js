@@ -142,6 +142,11 @@ track12 = {
 ]
 
 
+
+
+
+
+
 const responsive = function(){
      let a = document.querySelector("#main-section-small div:nth-child(8)")
      a.classList.add("hidden-sm", "hidden-md", "hidden-l") 
@@ -163,6 +168,58 @@ const responsive = function(){
    
 }
 
+
+const smallCardDisplay = function(){
+    
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=linkin%20park", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+            "x-rapidapi-key": "f99d689b32msh4674fe11236fc2fp191515jsn9e4bf3fe0032"
+        }
+    })
+    .then(response => response.json() )
+    .then( dataObj => {console.log(dataObj.data[0])
+        
+    let container = document.getElementById("main-section-small")
+    let array=[] 
+
+    do {
+        let x = (Math.floor((Math.random()*11)+1))
+        if(!array.includes(x)){
+            array.push(x)
+            const inhalt = `
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="index-album.html">
+                            <div class="mx-1 small-card-main d-flex align-items-center  my-2">
+                                <img class="small-card-image-main"
+                                    src="${dataObj.data[x].album.cover_medium}" alt="">
+                                    <a href="index-album.html"><p class=" description-main"> ${dataObj.data[x].title_short}</p></a>
+                            </div>
+                        </a>
+            </div>
+                        
+                        `
+    container.innerHTML +=inhalt 
+        }
+    }
+    while(array.length<8)
+    
+    responsive()
+    
+    })
+    
+    .catch(err => {
+        console.error(err);
+    });
+    
+    
+    
+
+    
+    
+}
+
 const responsiveRecent = function(){
      let a = document.querySelector("#main-section-recent div:nth-child(6)")
      a.classList.add("hidden-sm", "hidden-md", "hidden-l", "hidden-xl") 
@@ -180,53 +237,20 @@ const responsiveRecent = function(){
      f.classList.add("hidden-sm") 
    
 }
-const responsiveToTry = function(){
-     let a = document.querySelector("#main-section-to-try div:nth-child(6)")
-     a.classList.add("hidden-sm", "hidden-md", "hidden-l", "hidden-xl") 
-
-     let b = document.querySelector("#main-section-to-try div:nth-child(5)")
-     b.classList.add("hidden-sm", "hidden-md", "hidden-l", "hidden-xl") 
-
-     let c = document.querySelector("#main-section-to-try div:nth-child(4)")
-     c.classList.add("hidden-sm", "hidden-md", "hidden-l")
-
-     let d = document.querySelector("#main-section-to-try div:nth-child(3)")
-     d.classList.add("hidden-sm", "hidden-md") 
-      
-     let f = document.querySelector("#main-section-to-try div:nth-child(2)")
-     f.classList.add("hidden-sm") 
-   
-}
 
 
-
-const smallCardDisplay = function(){
-    let container = document.getElementById("main-section-small")
-    let array=[]  
-
-    do {
-        let x = (Math.floor((Math.random()*11)+1))
-        if(!array.includes(x)){
-            array.push(x)
-            const inhalt = `
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                        <a href="index-album.html">
-                            <div class="mx-1 small-card-main d-flex align-items-center  my-2">
-                                <img class="small-card-image-main"
-                                    src="${dataSmall[x].cover}" alt="">
-                                    <a href="index-album.html"><p class=" description-main"> ${dataSmall[x].title}</p></a>
-                            </div>
-                        </a>
-            </div>
-                        
-                        `
-    container.innerHTML +=inhalt 
-        }
-    }
-    while(array.length<8)
-    responsive()
-}
 const recentCardDisplay = function(){
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=linkin%20park", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+            "x-rapidapi-key": "f99d689b32msh4674fe11236fc2fp191515jsn9e4bf3fe0032"
+        }
+    })
+    .then(response => response.json() )
+    .then( dataObj => {console.log(dataObj.data[0])
+
+
     let container = document.getElementById("main-section-recent")
     let array=[]  
 
@@ -243,7 +267,7 @@ const recentCardDisplay = function(){
                     <div class="d-flex justify-content-center">
                         <div class="imagewrapper">
                             <div class="son">
-                                <img class="px-3 py-3 card-image-main" src="${dataMain[x].cover}" alt="">
+                                <img class="px-3 py-3 card-image-main" src="${dataObj.data[x].album.cover_big}" alt="">
                             </div>
                             <div class="son2 d-flex justify-content-end align-items-end">
                                 <div class="playbutton mb-3 mr-3">
@@ -254,22 +278,42 @@ const recentCardDisplay = function(){
                     </div>
         
                 </div>
-                <h6 class="px-2 my-1 card-title">${dataMain[x].title}</h6>
-                <p class="card-description-main my-2 px-2 ">${dataMain[x].description}</p>
+                <h6 class="px-2 my-1 card-title">${dataObj.data[x].title_short}</h6>
+                <p class="card-description-main my-2 px-2 ">${dataObj.data[x].preview}</p>
         
             </div>
         </a>
     </div>
                         
                         `
-    container.innerHTML +=inhalt 
+    container.innerHTML +=inhalt
         }
     }
-    while(array.length<6) 
-    
+    while(array.length<6)
+
     responsiveRecent()
+    })
+    
+    .catch(err => {
+        console.error(err);
+    }); 
+    
+    
 }
+
+
 const toTryCardDisplay = function(){
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=linkin%20park", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+            "x-rapidapi-key": "f99d689b32msh4674fe11236fc2fp191515jsn9e4bf3fe0032"
+        }
+    })
+    .then(response => response.json() )
+    .then( dataObj => {console.log(dataObj.data[0])
+
+
     let container = document.getElementById("main-section-to-try")
     let array=[]  
 
@@ -286,7 +330,7 @@ const toTryCardDisplay = function(){
                     <div class="d-flex justify-content-center">
                         <div class="imagewrapper">
                             <div class="son">
-                                <img class="px-3 py-3 card-image-main" src="${dataMain[x].cover}" alt="">
+                                <img class="px-3 py-3 card-image-main" src="${dataObj.data[x].album.cover_big}" alt="">
                             </div>
                             <div class="son2 d-flex justify-content-end align-items-end">
                                 <div class="playbutton mb-3 mr-3">
@@ -297,8 +341,8 @@ const toTryCardDisplay = function(){
                     </div>
         
                 </div>
-                <h6 class="px-2 my-1 card-title">${dataMain[x].title}</h6>
-                <p class="card-description-main my-2 px-2 ">${dataMain[x].description}</p>
+                <h6 class="px-2 my-1 card-title">${dataObj.data[x].title_short}</h6>
+                <p class="card-description-main my-2 px-2 ">${dataObj.data[x].preview}</p>
         
             </div>
         </a>
@@ -311,6 +355,30 @@ const toTryCardDisplay = function(){
     while(array.length<6)
     
     responsiveToTry()
+
+    })
+    
+    .catch(err => {
+        console.error(err);
+    }); 
+}
+
+const responsiveToTry = function(){
+     let a = document.querySelector("#main-section-to-try div:nth-child(6)")
+     a.classList.add("hidden-sm", "hidden-md", "hidden-l", "hidden-xl") 
+
+     let b = document.querySelector("#main-section-to-try div:nth-child(5)")
+     b.classList.add("hidden-sm", "hidden-md", "hidden-l", "hidden-xl") 
+
+     let c = document.querySelector("#main-section-to-try div:nth-child(4)")
+     c.classList.add("hidden-sm", "hidden-md", "hidden-l")
+
+     let d = document.querySelector("#main-section-to-try div:nth-child(3)")
+     d.classList.add("hidden-sm", "hidden-md") 
+      
+     let f = document.querySelector("#main-section-to-try div:nth-child(2)")
+     f.classList.add("hidden-sm") 
+   
 }
 
 const display = function () {
@@ -343,11 +411,13 @@ display()
 
 
 window.onload = function(){
+
+
+
     smallCardDisplay()
     recentCardDisplay()
     toTryCardDisplay()
    
     
 }
-
 
