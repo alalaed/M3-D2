@@ -182,7 +182,7 @@ const smallCardDisplay = function(){
     .then( dataObj => {console.log(dataObj.data[0])
         
     let container = document.getElementById("main-section-small")
-    letcontainerModal = document.getElementById("modalbody")
+    let containerModal = document.getElementById("modalbody")
     let array=[] 
     
 
@@ -259,7 +259,7 @@ const recentCardDisplay = function(){
 
 
     let container = document.getElementById("main-section-recent")
-    letcontainerModal = document.getElementById("modalbody")
+    let containerModal = document.getElementById("modalbody")
     let array=[]  
 
     do {
@@ -330,7 +330,7 @@ const toTryCardDisplay = function(){
 
 
     let container = document.getElementById("main-section-to-try")
-    letcontainerModal = document.getElementById("modalbody")
+    let containerModal = document.getElementById("modalbody")
     let array=[]  
 
     do {
