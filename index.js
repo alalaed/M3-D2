@@ -171,7 +171,7 @@ const responsive = function(){
 
 const smallCardDisplay = function(){
     
-    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=linkin%20park", {
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
@@ -182,12 +182,18 @@ const smallCardDisplay = function(){
     .then( dataObj => {console.log(dataObj.data[0])
         
     let container = document.getElementById("main-section-small")
+    letcontainerModal = document.getElementById("modalbody")
     let array=[] 
+    
 
     do {
         let x = (Math.floor((Math.random()*11)+1))
         if(!array.includes(x)){
             array.push(x)
+            const inhaltmodal =`
+                <tr>
+                    <td>${dataObj.data[x].album.title}</td>
+                </tr>`           
             const inhalt = `
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                         <a href="index-album.html">
@@ -200,6 +206,7 @@ const smallCardDisplay = function(){
             </div>
                         
                         `
+    containerModal.innerHTML+= inhaltmodal
     container.innerHTML +=inhalt 
         }
     }
@@ -240,7 +247,7 @@ const responsiveRecent = function(){
 
 
 const recentCardDisplay = function(){
-    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=linkin%20park", {
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=drake", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
