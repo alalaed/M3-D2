@@ -1,6 +1,19 @@
+let name=""
 
 
+const albumTitles = () => {
+    
+    let titles = document.querySelectorAll(".album-titles")
+    for( let i=0; i<titles.length; i++){
+        titles[i].addEventListener("click",(event)=>{
+            name = event.target.innerText
+            console.log(name)
+        })
 
+       
+    }
+
+}
 
 
 
@@ -9,21 +22,24 @@ const displayAlbum = (band) => {
   fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${band}`)
 .then(response => response.json())
 .then(body => {
-    console.log(body)
+    console.log(body.data)
+    
+    
     let container = document.getElementById("main-section-small")          
             const inhalt = `
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                        <a href="index-album.html">
+                        <div>
                             <div class="mx-1 small-card-main d-flex align-items-center  my-2">
                                 <img class="small-card-image-main"
                                     src="${body.data[0].album.cover}" alt="">
-                                    <a href="index-album.html"><p class=" description-main"> ${body.data[0].title}</p></a>
+                                    <a class="album-titles" href="index-album.html"><p class=" description-main"> ${body.data[0].album.title}</p></a>
                             </div>
-                        </a>
+                        </div>
             </div>
                         
                         `
     container.innerHTML +=inhalt
+    albumTitles()
 })
 
 }
@@ -137,12 +153,12 @@ const recentCardDisplay = function (band){
       fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${band}`)
 .then(response => response.json())
 .then(body => {
-    console.log(body)
+    
     let container = document.getElementById("main-section-recent")
 
             const inhalt = `
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
-        <a href="artist.html">
+        <div>
             <div class="card-main pb-1">
                 <div class="d-flex justify-content-center">
         
@@ -160,11 +176,11 @@ const recentCardDisplay = function (band){
                     </div>
         
                 </div>
-                <h6 class="px-2 my-1 card-title">${body.data[0].title}</h6>
+                <h6 class="album-titles px-2 my-1 card-title">${body.data[0].album.title}</h6>
                 <p class="card-description-main my-2 px-2 ">${body.data[0].artist.name}</p>
         
             </div>
-        </a>
+        </div>
     </div>
                         
                         `
@@ -179,12 +195,13 @@ const toTryCardDisplay = function(band){
     fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${band}`)
 .then(response => response.json())
 .then(body => {
-    console.log(body)
+    
     let container = document.getElementById("main-section-to-try")
+        
 
             const inhalt = `
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
-        <a href="artist.html">
+        <div>
             <div class="card-main pb-1">
                 <div class="d-flex justify-content-center">
         
@@ -202,17 +219,26 @@ const toTryCardDisplay = function(band){
                     </div>
         
                 </div>
-                <h6 class="px-2 my-1 card-title">${body.data[0].title}</h6>
+                <h6 class="album-titles px-2 my-1 card-title">${body.data[0].album.title}</h6>
                 <p class="card-description-main my-2 px-2 ">${body.data[0].artist.name}</p>
         
             </div>
-        </a>
+        </div>
     </div>
                         
-                        `
+        `
+
+    let titles = document.querySelectorAll(".album-titles") 
+    titles[0].onclick = () => window.location.assign("/index-album.html?picId="+body.data[0].album.Id)
+    console.log(titles[0])
+        
+    
     container.innerHTML +=inhalt
+
+   
     } )
 }
+
 
 const responsiveToTry = function(){
      let a = document.querySelector("#main-section-to-try div:nth-child(6)")
@@ -482,6 +508,45 @@ const renderData = () => {
 
 window.onload = function(){
     renderData ()
+    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${name}`)
+                .then(response => response.json())
+                .then(body=>{
+                    let image = document.querySelector(".card-image-head")
+                    image.src=(body.data[0].album.cover)
+
+                    let title = document.querySelector(".description-head_2")
+                    title.innerText = body.data[0].album.title
+
+                    console.log(body.data[0])
+
+                    let text3 = document.querySelectorAll(".under_text")
+                    for (let i = 0; i < text3.length; i++) {
+                        text3[i].innerText = body.data[0].artist.name
+                    }
+                    let text4 = document.querySelector(".description-head_3")
+                    
+                        text4.innerText = body.data[0].artist.name
+                    
+                    
+
+                    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${name}`, {
+                        "method": "GET",
+                        "headers": {
+                            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+                            "x-rapidapi-key": "a91386478dmsh26d5ec919787d88p121f11jsnadc153cc2fea"
+                        }
+                    })
+                    .then(resp => resp.json())
+                    .then(body2 =>{
+
+                        let obtained = document.querySelectorAll(".fox")
+                        for( let i = 0; i<obtained.length;i++){
+                            obtained[i].innerText = body2.data[i].title_short
+                        }                        
+                        
+                    })
+                })
+        
     
     
     // loadPlayList()
