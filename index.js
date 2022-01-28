@@ -1,19 +1,19 @@
-let name=""
+// let name=""
 
 
-const albumTitles = () => {
+// const albumTitles = () => {
     
-    let titles = document.querySelectorAll(".album-titles")
-    for( let i=0; i<titles.length; i++){
-        titles[i].addEventListener("click",(event)=>{
-            name = event.target.innerText
-            console.log(name)
-        })
+//     let titles = document.querySelectorAll(".album-titles")
+//     for( let i=0; i<titles.length; i++){
+//         titles[i].addEventListener("click",(event)=>{
+//             name = event.target.innerText
+//             console.log(name)
+//         })
 
        
-    }
+//     }
 
-}
+// }
 
 
 
@@ -39,7 +39,7 @@ const displayAlbum = (band) => {
                         
                         `
     container.innerHTML +=inhalt
-    albumTitles()
+    // albumTitles()
 })
 
 }
@@ -508,50 +508,9 @@ const renderData = () => {
 
 window.onload = function(){
     renderData ()
-    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${name}`)
-                .then(response => response.json())
-                .then(body=>{
-                    let image = document.querySelector(".card-image-head")
-                    image.src=(body.data[0].album.cover)
 
-                    let title = document.querySelector(".description-head_2")
-                    title.innerText = body.data[0].album.title
-
-                    console.log(body.data[0])
-
-                    let text3 = document.querySelectorAll(".under_text")
-                    for (let i = 0; i < text3.length; i++) {
-                        text3[i].innerText = body.data[0].artist.name
-                    }
-                    let text4 = document.querySelector(".description-head_3")
-                    
-                        text4.innerText = body.data[0].artist.name
-                    
-                    
-
-                    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${name}`, {
-                        "method": "GET",
-                        "headers": {
-                            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-                            "x-rapidapi-key": "a91386478dmsh26d5ec919787d88p121f11jsnadc153cc2fea"
-                        }
-                    })
-                    .then(resp => resp.json())
-                    .then(body2 =>{
-
-                        let obtained = document.querySelectorAll(".fox")
-                        for( let i = 0; i<obtained.length;i++){
-                            obtained[i].innerText = body2.data[i].title_short
-                        }                        
-                        
-                    })
-                })
-        
-    
-    
     // loadPlayList()
      
-    
  }
 
 /* JS FOR PROGRESS BAR END  */
