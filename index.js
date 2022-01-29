@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 let namesclicked=""
+=======
+// let name=""
+>>>>>>> 561e87f8dee6688036e58d0693a28b2cda4def62
 
 
-const albumTitles = () => {
+// const albumTitles = () => {
     
+<<<<<<< HEAD
     let titles = document.querySelectorAll(".album-titles")
     for( let i=0; i<titles.length; i++){
         titles[i].addEventListener("click",(event)=>{
@@ -10,11 +15,19 @@ const albumTitles = () => {
             console.log(namesclicked) 
 
         })
+=======
+//     let titles = document.querySelectorAll(".album-titles")
+//     for( let i=0; i<titles.length; i++){
+//         titles[i].addEventListener("click",(event)=>{
+//             name = event.target.innerText
+//             console.log(name)
+//         })
+>>>>>>> 561e87f8dee6688036e58d0693a28b2cda4def62
 
        
-    }
+//     }
 
-}
+// }
 
 // console.log(namesclicked)
 
@@ -41,7 +54,11 @@ const displayAlbum = (band) => {
                         
                         `
     container.innerHTML +=inhalt
+<<<<<<< HEAD
     
+=======
+    // albumTitles()
+>>>>>>> 561e87f8dee6688036e58d0693a28b2cda4def62
 })
 
 }
@@ -510,6 +527,7 @@ const renderData = () => {
 
 window.onload = function(){
     renderData ()
+<<<<<<< HEAD
     fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${namesclicked}`)
                 .then(response => response.json())
                 .then(body=>{
@@ -551,9 +569,11 @@ window.onload = function(){
         
     
     
+=======
+
+>>>>>>> 561e87f8dee6688036e58d0693a28b2cda4def62
     // loadPlayList()
      
-    
  }
 
 /* JS FOR PROGRESS BAR END  */

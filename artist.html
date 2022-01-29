@@ -241,13 +241,62 @@
     -->
 
    
-    <script src="index.js" >
+    <script src="index.js" ></script>
 
+    <script>
         window.onload = function() {
             loadPlayList();
             recentCardDisplay()
             toTryCardDisplay()
+          
+
+    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem`)
+                .then(response => response.json())
+                .then(body=>{
+                    let title = document.querySelector("h1")
+                    title.innerText = body.data[0].artist.name
+
+                    let obtained2 = document.querySelectorAll("img")
+                        for( let i = 0; i <obtained2.length;i++){
+                            obtained2[i].src = body.data[0].album.cover
+                        }  
+                })
+                //     let title = document.querySelector(".description-head_2")
+                //     title.innerText = body.data[0].album.title
+
+                //     console.log(body.data[0])
+
+                //     let text3 = document.querySelectorAll(".under_text")
+                //     for (let i = 0; i < text3.length; i++) {
+                //         text3[i].innerText = body.data[0].artist.name
+                //     }
+                //     let text4 = document.querySelector(".description-head_3")
+                    
+                //         text4.innerText = body.data[0].artist.name
+                                      
+                        
+                    
+
+                    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem`, {
+                        "method": "GET",
+                        "headers": {
+                            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+                            "x-rapidapi-key": "a91386478dmsh26d5ec919787d88p121f11jsnadc153cc2fea"
+                        }
+                    })
+                    .then(resp => resp.json())
+                    .then(body2 =>{
+
+                        let obtained = document.querySelectorAll("span>span")
+                        for( let i = 0; i<obtained.length;i++){
+                            obtained[i].innerText = body2.data[i].title_short
+                        }                        
+                        
+                    })
+                
+
         }
+        
     </script>
   </body>
 </html>
