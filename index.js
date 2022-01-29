@@ -1,4 +1,4 @@
-let name=""
+let namesclicked=""
 
 
 const albumTitles = () => {
@@ -6,8 +6,9 @@ const albumTitles = () => {
     let titles = document.querySelectorAll(".album-titles")
     for( let i=0; i<titles.length; i++){
         titles[i].addEventListener("click",(event)=>{
-            name = event.target.innerText
-            console.log(name)
+            namesclicked = event.target.innerText
+            console.log(namesclicked) 
+
         })
 
        
@@ -15,7 +16,7 @@ const albumTitles = () => {
 
 }
 
-
+// console.log(namesclicked)
 
 
 const displayAlbum = (band) => {
@@ -25,21 +26,22 @@ const displayAlbum = (band) => {
     console.log(body.data)
     
     
-    let container = document.getElementById("main-section-small")          
+    let container = document.getElementById("main-section-small") 
+             
             const inhalt = `
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                         <div>
                             <div class="mx-1 small-card-main d-flex align-items-center  my-2">
                                 <img class="small-card-image-main"
                                     src="${body.data[0].album.cover}" alt="">
-                                    <a class="album-titles" href="index-album.html"><p class=" description-main"> ${body.data[0].album.title}</p></a>
+                                    <div class="album-titles"><p class=" description-main"> ${body.data[0].album.title}</p></div>
                             </div>
                         </div>
             </div>
                         
                         `
     container.innerHTML +=inhalt
-    albumTitles()
+    
 })
 
 }
@@ -228,12 +230,12 @@ const toTryCardDisplay = function(band){
                         
         `
 
-    let titles = document.querySelectorAll(".album-titles") 
-    titles[0].onclick = () => window.location.assign("/index-album.html?picId="+body.data[0].album.Id)
-    console.log(titles[0])
+    // let titles = document.querySelectorAll(".album-titles") 
+    // titles[0].onclick = () => window.location.assign("/index-album.html?picId="+body.data[0].album.Id)
+    // console.log(titles[0])
         
     
-    container.innerHTML +=inhalt
+     container.innerHTML +=inhalt
 
    
     } )
@@ -508,7 +510,7 @@ const renderData = () => {
 
 window.onload = function(){
     renderData ()
-    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${name}`)
+    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${namesclicked}`)
                 .then(response => response.json())
                 .then(body=>{
                     let image = document.querySelector(".card-image-head")
@@ -529,7 +531,7 @@ window.onload = function(){
                     
                     
 
-                    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${name}`, {
+                    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${namesclicked}`, {
                         "method": "GET",
                         "headers": {
                             "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
