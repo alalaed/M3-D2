@@ -160,7 +160,7 @@ const toTryCardDisplay = (arrayOfRandomArtists) => {
           console.log(body.data)
         const inhalt = `
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-3 ">
-          <a href="artist.html">
+          <a href="./index-album.html?albumId=${body.data[x].album.id}">
             <div class="card-main pb-1">
               <div class="d-flex justify-content-center">
                 <div class="d-flex justify-content-center">

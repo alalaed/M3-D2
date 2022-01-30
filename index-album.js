@@ -16,13 +16,13 @@ const renderAlbum = () =>{
         .then(body=>{
             let albumCover = document.querySelector(".card-head-image")
             let tracks = body.tracks.data.length
-            let arr = []
-            for( let i=0;i<tracks; i++) {
-                let time  = body.tracks.data[i].duration   
-                arr.push(time)
-                const total = () => previous + current
-                console.log(arr.reduce(total))
-            }
+            // let arr = []
+            // for( let i=0;i<tracks; i++) {
+            //     let time  = body.tracks.data[i].duration   
+            //     arr.push(time)
+            //     const total = () => previous + current
+            //     console.log(arr.reduce(total))
+            // }
             
             
             
