@@ -118,6 +118,7 @@ const recentCardDisplay = (arrayOfRandomArtists) => {
       fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${element}`)
       .then(response=>response.json())
       .then(body=>{
+          console.log(body.data)
         const inhalt = `
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-3 ">
           <a href="./index-album.html?albumId=${body.data[x].album.id}">
@@ -138,7 +139,7 @@ const recentCardDisplay = (arrayOfRandomArtists) => {
         
               </div>
               <h6 class="px-2 my-1 card-title">${body.data[x].title_short}</h6>
-              <p class="card-description-main my-2 px-2 ">${body.data[x].artist.name}</p>
+              <a href="./artist.html?artistId=${body.data[x].artist.id}"><p class="card-description-main my-2 px-2 ">${body.data[x].artist.name}</p></a>
             </div>
           </a>
         </div>
