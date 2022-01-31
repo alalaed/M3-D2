@@ -605,3 +605,7 @@ a:hover{
 
 } */
   /* STYLES FOR PROGRESS BAR END */
+
+  .search-item-a:hover{
+      color: white;
+  }
