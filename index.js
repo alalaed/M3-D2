@@ -179,7 +179,9 @@ const toTryCardDisplay = (arrayOfRandomArtists) => {
         
               </div>
               <h6 class="px-2 my-1 card-title">${body.data[x].title_short}</h6>
-              <p class="card-description-main my-2 px-2 ">${body.data[x].artist.name}</p>
+              <a href="./artist.html?artistId=${body.data[x].artist.id}">
+                <p class="card-description-main my-2 px-2 ">${body.data[x].artist.name}</p>
+              </a>
             </div>
           </a>
         </div>
